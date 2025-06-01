@@ -32,8 +32,10 @@ export default function ChatPage() {
 
       const data = await res.json()
       setMessages([...updatedMessages, { role: 'assistant', content: data.response }])
-    } catch (error) {
-    setLoading(false)
+    }
+    catch (error) {
+      setLoading(false)
+    }
   }
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
