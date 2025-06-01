@@ -1,4 +1,5 @@
 'use client'
+import Image from 'next/image'
 import { useState, useRef, useEffect } from 'react'
 
 export default function ChatPage() {
@@ -31,9 +32,7 @@ export default function ChatPage() {
 
       const data = await res.json()
       setMessages([...updatedMessages, { role: 'assistant', content: data.response }])
-    } catch (e) {
-      setMessages([...updatedMessages, { role: 'assistant', content: "Sorry, something went wrong. Please try again." }])
-    }
+    } catch (error) {
     setLoading(false)
   }
 
@@ -45,7 +44,7 @@ export default function ChatPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-green-100 flex flex-col items-center justify-center">
       <div className="w-full max-w-2xl bg-white/90 shadow-2xl rounded-3xl p-8 border border-blue-100">
         <div className="flex items-center gap-3 mb-6">
-          <img src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="AI" className="w-10 h-10 rounded-full shadow" />
+          <Image src="https://cdn-icons-png.flaticon.com/512/4712/4712035.png" alt="AI" className="w-10 h-10 rounded-full shadow" />
           <h1 className="text-3xl font-extrabold text-blue-700 tracking-tight">Food Analyzer Chat</h1>
         </div>
         <div className="mb-6 h-96 overflow-y-auto px-2 py-4 bg-gradient-to-b from-white via-blue-50 to-green-50 rounded-2xl border border-blue-100 shadow-inner">
